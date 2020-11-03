@@ -20,6 +20,10 @@
   align-items: center;
   flex: 1;
   border-radius: 24px;
+  margin-right: 50px;
+  padding-right: 50px;
+  margin-left: 50px;
+  padding-left: 50px;
 }
 
 .header__searchInput {
