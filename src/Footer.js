@@ -14,7 +14,9 @@ const Footer = () => {
                 <span>
                     <img src={amazon} alt=""/>
                 </span>
+                <p>© 1996-2020, Amazon.com, Inc. or its affiliates</p>
             </div>
+           
         </div>
     );
 };

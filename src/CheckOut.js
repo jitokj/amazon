@@ -1,18 +1,22 @@
 import React from 'react';
 import "./CheckOut.css";
+import Subtotal from './Subtotal';
 
 const CheckOut = () => {
     return (
         <div className="checkout">
             <div className="checkout__left">
                 <img 
-                src="https://images-eu.ssl-images-amazon.com/images/G/31/img20/Laptops/Jupiter_2020/PHASE-3/Sliders/V259539351_IN_PC_Laptops_Jupiter_WF_1500x300_slider_8._CB418110559_SY250_.jpg"
+                src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
                  alt="ad" className="checkout__ad"/>
                  <div>
                      <h2 className="checkout__title">
                          Your Shopping Basket
                      </h2>
                  </div>
+            </div>
+            <div className="checkout__right">
+                <Subtotal />
             </div>
         </div>
     );
