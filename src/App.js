@@ -9,13 +9,14 @@ import React,{ useEffect } from 'react';
 import {auth} from "./firebase";
 import { useStateValue } from './StateProvider';
 
+
 function App() {
   const [,dispatch] = useStateValue();
 
-  
+
   useEffect(()=>{
     auth.onAuthStateChanged(authUser=>{
-      console.log("The User is >>>>",authUser);
+     
       if(authUser){
         dispatch({
           type: "SET_USER",
@@ -29,7 +30,7 @@ function App() {
         })
       }
     })
-  },[]);
+  });
 
 
   return (
