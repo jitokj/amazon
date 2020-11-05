@@ -11,6 +11,7 @@ const Product = ({id,title,image,price,rating}) => {
     
     
     const addToBasket = ()=>{
+       
 
         dispatch({
             type: "ADD_TO_BASKET",
