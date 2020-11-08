@@ -1,17 +1,19 @@
 import {useStripe, useElements,CardElement } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import CurrencyFormat from 'react-currency-format';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import CheckOutProduct from './CheckOutProduct';
 import "./Payment.css";
 import { useStateValue } from './StateProvider';
 import {getBasketTotal} from "./reducer";
 import axios from './Axios';
 
+
 const Payment = () => {
 
     const stipe= useStripe();
     const elements = useElements();
+    const history = useHistory();
     
     const [processing,setProcessing] = useState("");
     const [succeeded,setSucceeded] = useState(false);
