@@ -11,7 +11,7 @@ import axios from './Axios';
 
 const Payment = () => {
 
-    const stipe= useStripe();
+    const stripe= useStripe();
     const elements = useElements();
     const history = useHistory();
     
@@ -33,6 +33,8 @@ const Payment = () => {
 
         getClientSecret();
     },[basket])
+
+    console.log("clent secret==>",clientSecret);
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
@@ -102,8 +104,10 @@ const Payment = () => {
            thousandSeparator={true}
            prefix={"₹"}
          />
-         <button disabled={processing || disabled || succeeded}></button>
+         <button disabled={processing || disabled || succeeded}>
          <span>{processing ? <p>Processing</p>: "Buy Now"}</span>
+         </button>
+        
                       </div>
                       {error && <div>{error}</div>}
                   </form>
