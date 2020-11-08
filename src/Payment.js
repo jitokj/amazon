@@ -7,6 +7,7 @@ import "./Payment.css";
 import { useStateValue } from './StateProvider';
 import {getBasketTotal} from "./reducer";
 import axios from './Axios';
+import {db} from "./firebase";
 
 
 const Payment = () => {
@@ -19,7 +20,7 @@ const Payment = () => {
     const [succeeded,setSucceeded] = useState(false);
     const [error,setError] = useState(null);
     const [disabled,setDisabled] = useState(true);
-    const [{basket,user}] = useStateValue();
+    const [{basket,user},dispatch] = useStateValue();
     const [clientSecret,setClientSecret] = useState("");
 
     useEffect(()=>{
@@ -39,14 +40,26 @@ const Payment = () => {
     const handleSubmit = async (event)=>{
         event.preventDefault();
         setProcessing(true);
-        const payload = await stripe.confirmCardPayment(clientSecret,{
+         await stripe.confirmCardPayment(clientSecret,{
             payment_method: {
                 card: elements.getElement(CardElement)
             }
         }).then(({paymentIntent})=>{
+            db.collection('users')
+            .doc(user?.uid)
+            .collection('orders')
+            .doc(paymentIntent.id)
+            .set({
+                basket: basket,
+                amount: paymentIntent.amount,
+                created: paymentIntent.created
+            })
             setSucceeded(true);
             setError(null);
             setProcessing(false);
+            dispatch({
+                type: "EMPTY_BASKET"
+            })
             history.replace("/orders");
         })
     }
