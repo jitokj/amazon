@@ -6,11 +6,11 @@ https://clone-6464c.web.app/
 
 ---
 
-_material ui_
-_React router_
-_context api_
-_react hooks_
-_stripe payment_
+- _material ui_
+- _React router_
+- _context api_
+- _react hooks_
+- _stripe payment_
 
 This project was made with firebase.
 firebase cloud functions have been used.(not in deployed version)
